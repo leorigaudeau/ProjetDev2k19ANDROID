@@ -1,3 +1,5 @@
+package com.example.projetdev_2k19;
+
 public class fournisseur {
 
     public String nom;
@@ -6,9 +8,7 @@ public class fournisseur {
     public String telephone;
     public String mail;
 
-    public fournisseur(String nom, String adresse, String telephone) {
+    public fournisseur(String nom) {
         this.nom = nom;
-        this.adresse = adresse;
-        this.telephone = telephone;
     }
 }
