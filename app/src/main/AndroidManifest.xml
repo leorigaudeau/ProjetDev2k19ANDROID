@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fournisseur_item_liste"></activity>
+        <activity android:name=".fournisseur_item_liste" />
         <activity android:name=".listeFourni" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -18,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".desc_fourni"></activity>
     </application>
 
 </manifest>

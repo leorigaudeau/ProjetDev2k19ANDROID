@@ -1,3 +1,5 @@
+package com.example.projetdev_2k19;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
