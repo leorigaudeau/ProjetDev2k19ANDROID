@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<<<<<<< HEAD
     <TextView
         android:id="@+id/textView"
         android:layout_width="300dp"
@@ -78,4 +79,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/INPMdpO" />
+=======
+    <Button
+        android:id="@+id/button_connect"
+        android:layout_width="351dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+>>>>>>> 73edd8d20922628d8c768adecf398575d9945771
 </android.support.constraint.ConstraintLayout>

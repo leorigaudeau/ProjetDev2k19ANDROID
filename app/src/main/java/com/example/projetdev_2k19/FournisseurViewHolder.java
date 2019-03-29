@@ -9,11 +9,11 @@ import com.example.projetdev_2k19.R;
 public class FournisseurViewHolder extends RecyclerView.ViewHolder
 {
     // TextView intitulé course :
-    public TextView textViewLibelleCourse;
+    public TextView textViewNomfournisseur;
     // Constructeur :
     public FournisseurViewHolder(View itemView)
     {
         super(itemView);
-        textViewLibelleCourse = itemView.findViewById(R.id.nom_Fournisseur);
+        textViewNomfournisseur = itemView.findViewById(R.id.nom_Fournisseur);
     }
 }
