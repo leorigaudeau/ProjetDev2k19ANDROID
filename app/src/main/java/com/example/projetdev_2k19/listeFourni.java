@@ -38,9 +38,10 @@ public class listeFourni extends AppCompatActivity {
         // paramètres :
         RequestParams requestParams = new RequestParams();
         requestParams.put("parametre", "1234");
+        Log.i("RenduJson", "in enters");
         // Appel :
-        client.post("http://s519716619.onlinehome.fr/exchange/madrental/get-vehicules.php", requestParams, new AsyncHttpResponseHandler() {
-            @SuppressLint("WrongViewCast")
+        client.post("https://projetdev2019api.herokuapp.com/fournisseur", requestParams, new AsyncHttpResponseHandler() {
+
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Log.i("RenduJson", "in success");
@@ -81,12 +82,9 @@ public class listeFourni extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.e("infoJson", error.toString());
+                Log.e("RenduJson","fail" +  error.toString());
             }
         });
-        LinearLayout parent = (LinearLayout)findViewById(R.id.parent);
-        parent.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
-
 
     }
 }
