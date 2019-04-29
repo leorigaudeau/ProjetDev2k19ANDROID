@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ajoutFournisseur"></activity>
         <activity android:name=".fournisseur_item_liste" />
         <activity android:name=".listeFourni" />
         <activity android:name=".MainActivity">
@@ -20,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".desc_fourni"></activity>
+        <activity android:name=".desc_fourni" />
     </application>
 
 </manifest>

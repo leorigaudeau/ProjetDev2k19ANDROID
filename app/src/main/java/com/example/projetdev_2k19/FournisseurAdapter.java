@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class FournisseurAdapter extends RecyclerView.Adapter<FournisseurViewHolder>
@@ -27,6 +29,7 @@ public class FournisseurAdapter extends RecyclerView.Adapter<FournisseurViewHold
     public void onBindViewHolder(FournisseurViewHolder holder, int position)
     {
         holder.textViewNomfournisseur.setText(listeCourses.get(position).nom);
+        holder.textViewdescriptionfournisseur.setText(listeCourses.get(position).description);
     }
     @Override
     public int getItemCount()

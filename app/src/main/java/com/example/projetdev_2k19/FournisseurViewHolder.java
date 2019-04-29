@@ -10,10 +10,12 @@ public class FournisseurViewHolder extends RecyclerView.ViewHolder
 {
     // TextView intitulé course :
     public TextView textViewNomfournisseur;
+    public TextView textViewdescriptionfournisseur;
     // Constructeur :
     public FournisseurViewHolder(View itemView)
     {
         super(itemView);
         textViewNomfournisseur = itemView.findViewById(R.id.nom_Fournisseur);
+        textViewdescriptionfournisseur= itemView.findViewById(R.id.description_Fournisseur);
     }
 }
