@@ -8,7 +8,8 @@ public class fournisseur {
     public String telephone;
     public String mail;
 
-    public fournisseur(String nom) {
+    public fournisseur(String nom, String description) {
         this.nom = nom;
+        this.description=description;
     }
 }
