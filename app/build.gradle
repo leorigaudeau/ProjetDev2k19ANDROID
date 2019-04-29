@@ -24,10 +24,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.loopj.android:android-async-http:1.4.9'
-<<<<<<< HEAD
+
     implementation 'com.squareup.picasso:picasso:2.5.2'
-=======
->>>>>>> 73edd8d20922628d8c768adecf398575d9945771
+
     implementation 'com.google.code.gson:gson:2.7'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
