@@ -18,7 +18,10 @@ import com.loopj.android.http.ResponseHandlerInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.DataOutputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
@@ -45,49 +48,55 @@ public class ajoutFournisseur extends AppCompatActivity {
                 final EditText mailfourni = findViewById(R.id.INPmail);
                 final String vMail = String.valueOf(mailfourni.getText());
 
-                AsyncHttpClient client = new AsyncHttpClient();
-// paramètres :
-                RequestParams requestParams = new RequestParams();
-                requestParams.put("nom", vName);
-                requestParams.put("description", vDescription);
-                requestParams.put("adresse", vAdresse);
-                requestParams.put("telephone", vTelephone);
-                requestParams.put("mail", vMail);
-                Log.i("POSTJSON", String.valueOf(requestParams));
-// appel :
-                client.post("http://projetdev2019api.herokuapp.com/fournisseur", requestParams, new AsyncHttpResponseHandler()
-                {
+                Thread thread = new Thread(new Runnable() {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] response)
-                    {
-                        String retour = new String(response);
-                        Log.i("POSTJSON", retour);
-                        Log.i("POSTJSON", "onsuccess");
-                        Context context = getApplicationContext();
-                        CharSequence text = "Vous avez créé un nouveaux fournisseur !";
-                        int duration = Toast.LENGTH_SHORT;
+                    public void run() {
+                        try {
+                            URL url = new URL("http://projetdev2019api.herokuapp.com/fournisseur");
+                            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                            conn.setRequestMethod("POST");
+                            conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                            conn.setRequestProperty("Accept","application/json");
+                            conn.setDoOutput(true);
+                            conn.setDoInput(true);
 
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
-                        Intent intent = new Intent(ajoutFournisseur.this, MainActivity.class);  //Lancer l'activité DisplayVue
-                        startActivity(intent);
-                    }
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers,
-                                          byte[] errorResponse, Throwable e)
-                    {
-                        Log.e("POSTJSON", e.toString());
-                        Log.i("POSTJSON", "on failure");
-                        Context context = getApplicationContext();
-                        CharSequence text = "Problème de Connexion a L'API!";
-                        int duration = Toast.LENGTH_SHORT;
+                            JSONObject jsonParam = new JSONObject();
+                            jsonParam.put("nom", vName);
+                            jsonParam.put("description", vDescription);
+                            jsonParam.put("adresse", vAdresse);
+                            jsonParam.put("telephone", vTelephone);
+                            jsonParam.put("mail", vMail);
 
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                            Log.i("JSON", jsonParam.toString());
+                            DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                            //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+                            os.writeBytes(jsonParam.toString());
+
+                            os.flush();
+                            os.close();
+
+                            Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                            Log.i("MSG" , conn.getResponseMessage());
+
+                            conn.disconnect();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
+
+                thread.start();
+                Context context = getApplicationContext();
+                CharSequence text = "Vous avez créé un nouveaux fournisseur !";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                Intent intent = new Intent(ajoutFournisseur.this, listeFourni.class);  //Lancer l'activité DisplayVue
+                startActivity(intent);
             }
         });
+
 
     }
 }

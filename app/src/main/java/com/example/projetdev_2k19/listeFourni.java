@@ -67,7 +67,7 @@ public class listeFourni extends AppCompatActivity {
                         // layout manager, décrivant comment les items sont disposés :
                         LinearLayoutManager layoutManager = new LinearLayoutManager(listeFourni.this);
                         recyclerView.setLayoutManager(layoutManager);
-                        FournisseurAdapter coursesAdapter = new FournisseurAdapter(listeFourni);
+                        FournisseurAdapter coursesAdapter = new FournisseurAdapter(listeFourni,listeFourni.this);
                         recyclerView.setAdapter(coursesAdapter);
 
                     }
