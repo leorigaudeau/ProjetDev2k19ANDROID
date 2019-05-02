@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nomfournisolo"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Fournisseur (Nom)"
@@ -33,7 +33,7 @@
         android:layout_marginLeft="10dp"
     android:textColor="@color/colorAccent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textView"
+    app:layout_constraintTop_toBottomOf="@id/nomfournisolo"
     />
     <TextView
         android:id="@+id/desctext"

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 
 import java.util.List;
@@ -16,18 +17,20 @@ public class FournisseurAdapter extends RecyclerView.Adapter<FournisseurViewHold
     // Liste d'objets métier :
     private List<fournisseur> listeCourses;
     private Context mContext;
+
     // Constructeur :
     public FournisseurAdapter(List<fournisseur> listeCourses,Context context)
     {
         this.mContext= context;
         this.listeCourses = listeCourses;
     }
+
     @Override
     public FournisseurViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View viewCourse = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_fournisseur_item_liste, parent, false);
-        return new FournisseurViewHolder(viewCourse);
+        return new FournisseurViewHolder(viewCourse,listeCourses);
     }
     @Override
     public void onBindViewHolder(FournisseurViewHolder holder, final int position)
@@ -35,14 +38,6 @@ public class FournisseurAdapter extends RecyclerView.Adapter<FournisseurViewHold
         Log.d("onclickRECY", "onBindViewHolder: called.");
         holder.textViewNomfournisseur.setText(listeCourses.get(position).nom);
         holder.textViewdescriptionfournisseur.setText(listeCourses.get(position).description);
-        //holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            //public void onClick(View view) {
-              //  Log.d("onclickRECY", "onClick: clicked on: " + listeCourses.get(position));
-              //Intent intent = new Intent(mContext, desc_fourni.class);
-              //intent.putExtra("nomFournie",listeCourses.get(position).nom);
-              //mContext.startActivity(intent);
-            //}
-        //});
     }
     @Override
     public int getItemCount()

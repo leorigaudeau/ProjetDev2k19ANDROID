@@ -52,12 +52,15 @@ public class listeFourni extends AppCompatActivity {
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         final JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String vId = jsonObject.getString("_id");
                         String vName = jsonObject.getString("nom");
                         String vDesc = jsonObject.getString("description");
+                        String vAdresse = jsonObject.getString("adresse");
+                        String vTelephone = jsonObject.getString("telephone");
+                        String vMail = jsonObject.getString("mail");
 
 
-
-                        fournisseur vehicule = new fournisseur(vName,vDesc);
+                        fournisseur vehicule = new fournisseur(vId,vName,vDesc,vAdresse,vTelephone,vMail);
                         listeFourni.add(vehicule);
 
 

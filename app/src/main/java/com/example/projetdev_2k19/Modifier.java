@@ -10,51 +10,51 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-import com.loopj.android.http.ResponseHandlerInterface;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.DataOutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.entity.StringEntity;
-
-public class ajoutFournisseur extends AppCompatActivity {
+public class Modifier extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ajout_fournisseur);
-        Button ButtonConnexion = (Button) findViewById(R.id.BTNCreer);   //Appel du "button1"
+        setContentView(R.layout.activity_modifier);
+
+        final EditText nomfourni = findViewById(R.id.INPnommodif);
+        nomfourni.setText(getIntent().getStringExtra("fourninom"));
+        final EditText descfourni = findViewById(R.id.INPdescmodif);
+        descfourni.setText(getIntent().getStringExtra("fournidescription"));
+        final EditText telfourni = findViewById(R.id.INPtelmodif);
+        telfourni.setText(getIntent().getStringExtra("fourniadresse"));
+        final EditText adressfourni = findViewById(R.id.INPadressmodif);
+        adressfourni.setText(getIntent().getStringExtra("fournitelephone"));
+        final EditText mailfourni = findViewById(R.id.INPmailmodif);
+        mailfourni.setText(getIntent().getStringExtra("fournimail"));
+        final String id = getIntent().getStringExtra("fourniId");
+
+        Button ButtonConnexion = (Button) findViewById(R.id.BTNmodif);   //Appel du "button1"
         ButtonConnexion.setOnClickListener(new View.OnClickListener()      //Creation du listener sur ce bouton
         {
             public void onClick(View actuelView)    //au clic sur le bouton
             {
-                final EditText nomfourni = findViewById(R.id.INPnom);
+
                 final String vName = String.valueOf(nomfourni.getText());
-                final EditText descfourni = findViewById(R.id.INPdesc);
                 final String vDescription = String.valueOf(descfourni.getText());
-                final EditText telfourni = findViewById(R.id.INPtel);
                 final String vAdresse = String.valueOf(telfourni.getText());
-                final EditText adressfourni = findViewById(R.id.INPadress);
                 final String vTelephone = String.valueOf(adressfourni.getText());
-                final EditText mailfourni = findViewById(R.id.INPmail);
                 final String vMail = String.valueOf(mailfourni.getText());
 
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            URL url = new URL("http://projetdev2019api.herokuapp.com/fournisseur");
+                            URL url = new URL("http://projetdev2019api.herokuapp.com/fournisseur/"+id);
+                            Log.d("modifurl", "run: "+url);
                             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                            conn.setRequestMethod("POST");
+                            conn.setRequestMethod("PUT");
                             conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
                             conn.setRequestProperty("Accept","application/json");
                             conn.setDoOutput(true);
@@ -87,7 +87,7 @@ public class ajoutFournisseur extends AppCompatActivity {
 
                 thread.start();
                 Context context = getApplicationContext();
-                CharSequence text = "Vous avez créé un nouveaux fournisseur !";
+                CharSequence text = "Vous avez modifier un fournisseur !";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(context, text, duration);
@@ -95,7 +95,5 @@ public class ajoutFournisseur extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }

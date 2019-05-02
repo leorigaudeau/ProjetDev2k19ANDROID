@@ -1,8 +1,20 @@
 package com.example.projetdev_2k19;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class desc_fourni extends AppCompatActivity {
 
@@ -11,15 +23,88 @@ public class desc_fourni extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc_fourni);
 
+        Log.d("recup", "getIncomingIntent: "+ getIntent().getStringExtra("fourninom"));
+        Log.d("recup", "getIncomingIntent: "+ getIntent().getStringExtra("fournidescription"));
+        Log.d("recup", "getIncomingIntent: "+ getIntent().getStringExtra("fourniadresse"));
+        Log.d("recup", "getIncomingIntent: "+ getIntent().getStringExtra("fournimail"));
+        Log.d("recup", "getIncomingIntent: "+ getIntent().getStringExtra("fournitelephone"));
+        Log.d("recup", "getIncomingIntent: "+ getIntent().getStringExtra("fourniid"));
 
-    }
+        if (getIntent().hasExtra("fourninom")){
+            final String fourniId = getIntent().getStringExtra("fourniid");
+            final String fourninom = getIntent().getStringExtra("fourninom");
+            final String fournidescription = getIntent().getStringExtra("fournidescription");
+            final String fourniadresse = getIntent().getStringExtra("fourniadresse");
+            final String fournitelephone = getIntent().getStringExtra("fournitelephone");
+            final String fournimail = getIntent().getStringExtra("fournimail");
+            Log.d("delFournisse", "onCreate: "+fourniId );
+            TextView Textnom = findViewById(R.id.nomfournisolo);
+            TextView Textdesc = findViewById(R.id.desctext);
+            TextView Textadresse = findViewById(R.id.adresse);
+            TextView Texttel = findViewById(R.id.tel);
+            TextView Textmail = findViewById(R.id.mail);
 
-    private void getIncomingIntent(){
-        if (getIntent().hasExtra("nomFournie")){
-            String nomFournisseur = getIntent().getStringExtra("nomFournie");
+
+            Textnom.setText(fourninom);
+            Textdesc.setText(fournidescription);
+            Textadresse.setText(fourniadresse);
+            Texttel.setText(fournitelephone);
+            Textmail.setText(fournimail);
+
+            final Button modifier = findViewById(R.id.BTNModif);
+            modifier.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(desc_fourni.this, Modifier.class);
+                    intent.putExtra("fourninom", getIntent().getStringExtra("fourninom"));
+                    intent.putExtra("fournidescription", getIntent().getStringExtra("fournidescription"));
+                    intent.putExtra("fourniadresse", getIntent().getStringExtra("fourniadresse"));
+                    intent.putExtra("fournitelephone", getIntent().getStringExtra("fournitelephone"));
+                    intent.putExtra("fournimail", getIntent().getStringExtra("fournimail"));
+                    intent.putExtra("fourniId", getIntent().getStringExtra("fourniid"));
+                    startActivity(intent);
+                }
+            });
+
+            final Button supprimer = findViewById(R.id.BTNSuppr);
+            supprimer.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+
+                            Thread thread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        URL url = new URL("http://projetdev2019api.herokuapp.com/fournisseur/"+fourniId);
+                                        Log.d("modifurl", "run: "+url);
+                                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                                        conn.setRequestMethod("DELETE");
+                                        conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                                        conn.setRequestProperty("Accept","application/json");
+                                        conn.setDoOutput(true);
+                                        conn.setDoInput(true);
+
+                                        Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                                        Log.i("MSG" , conn.getResponseMessage());
+
+                                        conn.disconnect();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+                    thread.start();
+                    Context context = getApplicationContext();
+                    CharSequence text = "Vous avez supprimer un fournisseur !";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    finish();
+                }
+            });
+
         }
     }
-
 
     private void setImage(String nomFournisseur){
         TextView name = findViewById(R.id.textView);
