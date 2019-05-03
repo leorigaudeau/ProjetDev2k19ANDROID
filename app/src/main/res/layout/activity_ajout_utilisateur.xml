@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.projetdev_2k19.ajoutUtilisateur">
+
+    <!-- Pour arriver sur cette page cliquer sur le bouton AJOUTER dans liste Utilisateur.
+    Cette page permet d'ajouter un Utilisateur dans la base de données-->
+
+    <!-- [Titre] Page Ajout Utilisateur -->
+    <TextView
+        android:id="@+id/titleajout"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginTop="124dp"
+        android:text="Ajouter un Utilisateur"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18dp"/>
+    <!-- [Labelle] id du Utilisateur -->
+    <TextView
+        android:id="@+id/identi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Identifiant"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleajout"
+        tools:ignore="MissingConstraints" />
+    <!-- [Input] id du Utilisateur-->
+    <EditText
+        android:id="@+id/INPidenti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/identi"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        />
+    <!-- [Labelle] mdp du Utilisateur-->
+    <TextView
+
+        android:id="@+id/mdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mot de passe"
+        app:layout_constraintTop_toBottomOf="@+id/INPidenti"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <!-- [Input] mdp du Utilisateur-->
+    <EditText
+        android:id="@+id/INPmdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/mdp"
+        tools:layout_editor_absoluteX="0dp" />
+    <!-- [Bouton] Création -->
+    <Button
+        android:id="@+id/BTNCreerUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Créer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/INPmdp" />
+
+</android.support.constraint.ConstraintLayout>

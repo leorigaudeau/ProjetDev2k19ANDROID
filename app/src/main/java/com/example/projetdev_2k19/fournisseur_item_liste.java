@@ -10,6 +10,7 @@ public class fournisseur_item_liste extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fournisseur_item_liste);
 
+
     }
 
 

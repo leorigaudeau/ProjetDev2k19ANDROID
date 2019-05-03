@@ -35,6 +35,7 @@ public class FournisseurAdapter extends RecyclerView.Adapter<FournisseurViewHold
     @Override
     public void onBindViewHolder(FournisseurViewHolder holder, final int position)
     {
+        // On recupere la liste de fournisseurs créés dans la méthode GET et on créé nos items que l'on injecte dans la Recycler view
         Log.d("onclickRECY", "onBindViewHolder: called.");
         holder.textViewNomfournisseur.setText(listeCourses.get(position).nom);
         holder.textViewdescriptionfournisseur.setText(listeCourses.get(position).description);

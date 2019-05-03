@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+<!-- Page de connexion arrivée ici au lancement de l'application -->
+    <!-- Nom de l'entreprise qui demande l'application-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="300dp"
@@ -20,7 +21,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
+    <!-- [Input] Identifiant -->
     <EditText
         android:id="@+id/INPId"
         android:layout_width="300dp"
@@ -35,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_marginTop="70dp"
         />
-
+    <!-- [Input] Mot de passe -->
     <EditText
         android:id="@+id/INPMdp"
         android:layout_width="300dp"
@@ -52,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/INPId"
         android:layout_marginTop="40dp"
         />
-
+    <!-- [Bouton] Connexion -->
     <Button
         android:id="@+id/BTNvalider"
         android:layout_width="50dp"
@@ -66,4 +67,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/INPMdp" />
+
+    <TextView
+        android:id="@+id/nvuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Créer un utilisateur"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BTNvalider" />
+
 </android.support.constraint.ConstraintLayout>
+

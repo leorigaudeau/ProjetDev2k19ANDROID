@@ -36,13 +36,15 @@ public class listeFourni extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_fourni);
+        //Création requête asynchrone
         // client HTTP :
         AsyncHttpClient client = new AsyncHttpClient();
-        // Appel :
+        // Appel en utilisant la methode GET :
         client.get("http://projetdev2019api.herokuapp.com/fournisseur", new AsyncHttpResponseHandler() {
             @SuppressLint("WrongViewCast")
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                // Si la récupération à réussi
                 Log.i("RenduJson", "in success");
                 String retour = new String(response);
                 Gson gson = new Gson();
@@ -51,6 +53,7 @@ public class listeFourni extends AppCompatActivity {
                     JSONArray jsonArray = new JSONArray(retour);
 
                     for (int i = 0; i < jsonArray.length(); i++) {
+                        //Initialisation des valeurs, récupérées avec le JSON, dans les valeurs vId,vNom,....
                         final JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String vId = jsonObject.getString("_id");
                         String vName = jsonObject.getString("nom");
@@ -59,11 +62,11 @@ public class listeFourni extends AppCompatActivity {
                         String vTelephone = jsonObject.getString("telephone");
                         String vMail = jsonObject.getString("mail");
 
-
+                        //Création d'un fournisseur et ajout dans la liste
                         fournisseur vehicule = new fournisseur(vId,vName,vDesc,vAdresse,vTelephone,vMail);
                         listeFourni.add(vehicule);
 
-
+                        //Envoi du fournisseur dans la recycler View
                         RecyclerView recyclerView = findViewById(R.id.list_Fournisseur);
                         // à ajouter pour de meilleures performances :
                         recyclerView.setHasFixedSize(true);
@@ -84,10 +87,13 @@ public class listeFourni extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers,
                                   byte[] errorResponse, Throwable e) {
+
+                // Si la récupération à échouée
                 Log.e("infoJson", e.toString());
             }
 
         });
+        // Initialisation de la redirection sur ajout fournisseur.
         final Button button = findViewById(R.id.BTNvalider);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

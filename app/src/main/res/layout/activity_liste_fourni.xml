@@ -12,6 +12,9 @@
     tools:context=".listeFourni"
     android:id="@+id/constraintview">
 
+    <!-- Page principal arrivée après la connexion, elle affiche tous les fournisseurs et permet
+    d'en ajouter des nouveaux. -->
+    <!-- Nom de l'entreprise qui demande l'application-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="300dp"
@@ -27,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:paddingBottom="20dp"
         />
+    <!-- [Recyler View ] Liste de tous les fournisseurs-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_Fournisseur"
         android:layout_width="match_parent"
@@ -36,7 +40,7 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-
+    <!-- [Bouton] Ajout d'un fournisseur-->
     <Button
         android:id="@+id/BTNvalider"
         android:layout_width="190dp"

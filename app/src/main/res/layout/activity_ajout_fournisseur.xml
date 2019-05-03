@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ajoutFournisseur">
+
+    <!-- Pour arriver sur cette page cliquer sur le bouton AJOUTER dans liste fournisseur.
+    Cette page permet d'ajouter un fournisseur dans la base de données-->
+
+    <!-- [Titre] Page Ajout fournisseur -->
 <TextView
     android:id="@+id/titleajout"
     android:layout_width="wrap_content"
@@ -14,6 +19,7 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
+    <!-- [Labelle] Nom du Fournisseur -->
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
@@ -25,7 +31,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
+    <!-- [Input] Nom du Fournisseur-->
     <EditText
         android:id="@+id/INPnom"
         android:layout_width="match_parent"
@@ -34,7 +40,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         />
-
+    <!-- [Labelle] Description du Fournisseur-->
     <TextView
 
         android:id="@+id/textView3"
@@ -46,14 +52,14 @@
         tools:layout_editor_absoluteX="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-
+    <!-- [Input] Description du Fournisseur-->
     <EditText
         android:id="@+id/INPdesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:layout_editor_absoluteX="0dp" />
-
+    <!-- [Labelle] Numéro de téléphone du Fournisseur-->
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -64,14 +70,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
-
+    <!-- [Input] Numéro de téléphone du Fournisseur-->
     <EditText
         android:id="@+id/INPtel"
         android:layout_width="419dp"
         android:layout_height="44dp"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="MissingConstraints" />
-
+    <!-- [Labelle] Adresse du Fournisseur -->
     <TextView
 
         android:id="@+id/textView5"
@@ -82,14 +88,14 @@
         tools:ignore="MissingConstraints"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-
+    <!-- [Input] Adresse du Fournisseur -->
     <EditText
         android:id="@+id/INPadress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:ignore="MissingConstraints" />
-
+    <!-- [Labelle] E-mail du Fournisseur-->
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -99,7 +105,7 @@
         tools:ignore="MissingConstraints"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-
+    <!-- [Input] E-mail du Fournisseur -->
     <EditText
         android:id="@+id/INPmail"
         android:layout_width="match_parent"
@@ -107,7 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
-
+    <!-- [Bouton] Création -->
     <Button
         android:id="@+id/BTNCreer"
         android:layout_width="wrap_content"

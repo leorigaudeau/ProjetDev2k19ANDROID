@@ -1,6 +1,8 @@
 package com.example.projetdev_2k19;
 
 public class fournisseur {
+
+    // Classe fournisseur qui à les mêmes caractéristiques que les objets dans l'API
     public String id;
     public String nom;
     public String description;

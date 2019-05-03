@@ -22,6 +22,7 @@ public class FournisseurViewHolder extends RecyclerView.ViewHolder
     // Constructeur
     public FournisseurViewHolder(final View itemView, final List<fournisseur> listeCourses)
     {
+        // On initialise les différentes zones au type de valeur ex: [type]textViewNomfournisseur == [zone] itemView.findViewById(R.id.nom_Fournisseur);
         super(itemView);
         textViewNomfournisseur = itemView.findViewById(R.id.nom_Fournisseur);
         textViewdescriptionfournisseur= itemView.findViewById(R.id.description_Fournisseur);
@@ -32,6 +33,7 @@ public class FournisseurViewHolder extends RecyclerView.ViewHolder
             @Override
             public void onClick(View view)
             {
+                // On créé un onclick listener sur chaque élément avec les données à passer à la page d'après.
                 Intent intent = new Intent(itemView.getContext(), desc_fourni.class);
                 intent.putExtra("fourninom", listeCourses.get(getAdapterPosition()).nom);
                 intent.putExtra("fournidescription", listeCourses.get(getAdapterPosition()).description);
